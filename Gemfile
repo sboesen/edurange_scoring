@@ -15,6 +15,8 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form'
+gem 'pry'
+gem 'pry-rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
@@ -24,8 +26,6 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'pry'
-  gem 'pry-rails'
 end
 group :test do
   gem 'capybara'
