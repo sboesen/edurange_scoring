@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @attempt.user_id
+%p
+  %b Scenario:
+  = @attempt.scenario_id
+%p
+  %b Score:
+  = @attempt.score
+%p
+  %b Hosts:
+  = @attempt.hosts
+
+= link_to 'Edit', edit_attempt_path(@attempt)
+\|
+= link_to 'Back', attempts_path

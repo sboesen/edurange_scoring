@@ -1,4 +1,10 @@
 EdurangeScoring::Application.routes.draw do
+  resources :attempts
+
+
+  resources :scenarios
+
+
   authenticated :user do
     root :to => 'home#index'
   end
