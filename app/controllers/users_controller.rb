@@ -30,4 +30,9 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => "Can't delete yourself."
     end
   end
+  def download_key
+    unless current_user.private_key.blank?
+      send_data current_user.private_key, filename: 'ssh_private_key.pem', type: :text
+    end
+  end
 end

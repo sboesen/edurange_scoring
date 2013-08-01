@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731214050) do
+ActiveRecord::Schema.define(:version => 20130731225902) do
+
+  create_table "attempts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "scenario_id"
+    t.integer  "score"
+    t.text     "hosts"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20130731214050) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "scenarios", :force => true do |t|
+    t.string   "name"
+    t.text     "users"
+    t.text     "nodes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130731214050) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "private_key"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -14,6 +14,9 @@ class AttemptsController < ApplicationController
   # GET /attempts/1.json
   def show
     @attempt = Attempt.find(params[:id])
+    if @attempt.user != current_user
+      redirect_to scenarios_path
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +27,9 @@ class AttemptsController < ApplicationController
   # GET /attempts/new
   # GET /attempts/new.json
   def new
-    @attempt = Attempt.new
+    @scenario = Scenario.find(params[:scenario_id])
+    @attempt = @scenario.attempts.new
+    @attempt.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +45,13 @@ class AttemptsController < ApplicationController
   # POST /attempts
   # POST /attempts.json
   def create
-    @attempt = Attempt.new(params[:attempt])
+    @scenario = Scenario.find(params[:scenario_id])
+    @attempt = @scenario.attempts.new(params[:attempt])
+    @attempt.user = current_user
 
     respond_to do |format|
       if @attempt.save
-        format.html { redirect_to @attempt, notice: 'Attempt was successfully created.' }
+        format.html { redirect_to [@scenario, @attempt], notice: 'Attempt was successfully created.' }
         format.json { render json: @attempt, status: :created, location: @attempt }
       else
         format.html { render action: "new" }

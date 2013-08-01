@@ -36,6 +36,7 @@ class ScenariosController < ApplicationController
 
   # GET /scenarios/1/edit
   def edit
+    authorize! :edit, @user, :message => 'Not authorized as an administrator.'
     @scenario = Scenario.find(params[:id])
   end
 

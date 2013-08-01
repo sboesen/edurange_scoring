@@ -1,10 +1,7 @@
-= simple_form_for(@attempt) do |f|
+= simple_form_for([@scenario, @attempt]) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :user_id
-    = f.input :scenario_id
-    = f.input :score
     = f.input :hosts
 
   .form-actions

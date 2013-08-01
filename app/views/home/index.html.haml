@@ -1,4 +1,8 @@
 %h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+%ul
+  %li
+    %b #{link_to 'Click here', scenarios_path} 
+    for a list of scenarios you can attempt
+  %li 
+    %b #{link_to 'Click here', download_key_path} 
+    to download your private key.

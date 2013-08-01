@@ -5,17 +5,15 @@
     %th User
     %th Scenario
     %th Score
-    %th Hosts
     %th
     %th
     %th
 
   - @attempts.each do |attempt|
     %tr
-      %td= attempt.user_id
-      %td= attempt.scenario_id
+      %td= attempt.user.name
+      %td= attempt.scenario.name
       %td= attempt.score
-      %td= attempt.hosts
       %td= link_to 'Show', attempt
       %td= link_to 'Edit', edit_attempt_path(attempt)
       %td= link_to 'Destroy', attempt, :method => :delete, :data => { :confirm => 'Are you sure?' }

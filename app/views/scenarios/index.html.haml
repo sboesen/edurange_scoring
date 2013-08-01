@@ -3,8 +3,6 @@
 %table
   %tr
     %th Name
-    %th Users
-    %th Nodes
     %th
     %th
     %th
@@ -12,8 +10,7 @@
   - @scenarios.each do |scenario|
     %tr
       %td= scenario.name
-      %td= scenario.users
-      %td= scenario.nodes
+      %td= link_to 'Attempt Scenario', new_scenario_attempt_path(scenario)
       %td= link_to 'Show', scenario
       %td= link_to 'Edit', edit_scenario_path(scenario)
       %td= link_to 'Destroy', scenario, :method => :delete, :data => { :confirm => 'Are you sure?' }
