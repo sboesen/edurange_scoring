@@ -12,10 +12,6 @@ YAML.load(ENV['ROLES']).each do |role|
   Role.find_or_create_by_name({ :name => role }, :without_protection => true)
   puts 'role: ' << role
 end
-puts 'DEFAULT USERS'
-user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
-puts 'user: ' << user.name
-user.add_role :admin
 
 File.open(File.expand_path(File.dirname(__FILE__)) + '/users.txt', 'r').each_line do |line|
   user, pass = line.split(',')
@@ -25,4 +21,3 @@ File.open(File.expand_path(File.dirname(__FILE__)) + '/users.txt', 'r').each_lin
 end
 nodes = File.open(File.expand_path(File.dirname(__FILE__)) + '/nodes.txt', 'rb').read
 scenario = Scenario.new
-binding.pry
