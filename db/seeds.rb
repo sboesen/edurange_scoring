@@ -21,3 +21,6 @@ File.open(File.expand_path(File.dirname(__FILE__)) + '/users.txt', 'r').each_lin
 end
 nodes = File.open(File.expand_path(File.dirname(__FILE__)) + '/nodes.txt', 'rb').read
 scenario = Scenario.new
+scenario.name = "EDURange"
+scenario.nodes = nodes
+scenario.save!

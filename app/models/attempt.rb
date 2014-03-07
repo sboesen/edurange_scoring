@@ -7,7 +7,7 @@ class Attempt < ActiveRecord::Base
   def score_submission
     self.score = 0
     if self.scenario
-      self.hosts.split("\n").each do |host|
+      self.hosts.gsub("\r","").split("\n").each do |host|
         if self.scenario.nodes.split("\n").include? host
           self.score = self.score + 1
         else
